@@ -25,7 +25,7 @@ def mystery_word():
         mysteryword=input('Player 1 please input the mystery word: ')
         if mysteryword.isalpha()==False:
             print('Player 1 please input a valid mystery word!')
-        elif mysteryword.isalpha()==True:
+        if mysteryword.isalpha()==True:
             return mysteryword.upper()
 
 
@@ -36,9 +36,9 @@ def player_guess():
         playerguess=input('Player 2 Please enter a letter or guess the word: ')
         if playerguess.isalpha()==False:
             print('Player 1 please input a valid mystery word!')
-        elif playerguess.isalpha()==True:
+        if playerguess.isalpha()==True:
             return playerguess.upper()
-0
+
 #   Game functionality.
 def game():
 
@@ -91,10 +91,12 @@ def game():
                 for index in index_pos:
                     hiddenword[index]=pg
                 
-                #   If the player guesses all the letters inside the 
+                #   If the player guesses all the letters inside the mysterword they win.
                 if ''.join(hiddenword) == mw:
+                    play=False
                     print("Congratulations, You have guessed the correct word! You win!\n")
-                    play==False 
+                    
+
 
 
 
@@ -128,9 +130,29 @@ def game():
             tries -=1
             print(hangman(tries))
 
+# Ask the players if they want to keep on playing
+def keep_playing():
+    keepplaying=True
+    condition = False
+
+    while keepplaying == True or condition == False:
+        game()
+        question=input('Would you like to keep on playing?: (Y or N)')
+        if question.isdigit() == False:
+            print('Please enter valid input')
+        if question.isdigit()==True:
+            condition ==True
+            if question == 'Y' or 'y':
+                keepplaying =True
+            if question == 'N' or 'n':
+                keepplaying = False
+                print('Thankyou for playing!')
 
 
-game()
+
+            
+if __name__ == "__main__":
+    keep_playing()    
 
 
 
