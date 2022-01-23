@@ -1,13 +1,9 @@
 #Hangman!
 #Hangman is a paper and pencil guessing game for two or more players.
-#One player things of a word and the other tries to guess that word by suggesting letters and within a certain number of attempts
-
-#There are 6 attempts to hangman and for each incorrect attempt a limb will be added to the hang man post.
-#Steps to complete!
-
+#   One player things of a word and the other tries to guess that word by suggesting letters and within a certain number of attempts.
+#   There are 6 attempts to hangman and for each incorrect attempt a limb will be added to the hang man post.
+#   Steps to complete!
 #   The Hangman Board
-
-
 def hangman(i):
     hangman_dict={6: '-------\n|\n|\n|\n|\n|\n------------', 
     5: '-------\n|     |\n|     O\n|\n|\n|\n------------',
@@ -28,7 +24,6 @@ def mystery_word():
         if mysteryword.isalpha()==True:
             return mysteryword.upper()
 
-
 #   Get input of the player guess.
 def player_guess():
     playerguess=''
@@ -42,16 +37,12 @@ def player_guess():
 #   Game functionality.
 def game():
 
-    play=True
-    
+    play=True   
     #   In hangman there are 6 chances to guess the word.
     tries=6
-
     hiddenword=[]
-
     guessedletters=[]
     guessedwords=[]
-
     mw=mystery_word()
 
     for i in range(len(mw)):
@@ -95,10 +86,6 @@ def game():
                 if ''.join(hiddenword) == mw:
                     play=False
                     print("Congratulations, You have guessed the correct word! You win!\n")
-                    
-
-
-
 
         #   Creating the conditions if the player guessed an entire word
         elif len(pg) == len(mw):
@@ -131,28 +118,19 @@ def game():
             print(hangman(tries))
 
 # Ask the players if they want to keep on playing
-def keep_playing():
-    keepplaying=True
-    condition = False
-
-    while keepplaying == True or condition == False:
+def main():
+    keep_playing=True
+    while keep_playing==True:
         game()
-        question=input('Would you like to keep on playing?: (Y or N)')
-        if question.isdigit() == False:
-            print('Please enter valid input')
-        if question.isdigit()==True:
-            condition ==True
-            if question == 'Y' or 'y':
-                keepplaying =True
-            if question == 'N' or 'n':
-                keepplaying = False
-                print('Thankyou for playing!')
+        play=input('Would you like to keep playing? (Y/N): ')
+        if play=='y' or play =='Y':
+            keep_playing= True
+        else:
+            print('Game Over! Thankyou for playing!')
+            keep_playing= False
 
-
-
-            
 if __name__ == "__main__":
-    keep_playing()    
+    main()    
 
 
 
