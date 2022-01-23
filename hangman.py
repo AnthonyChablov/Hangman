@@ -1,6 +1,6 @@
 #Hangman!
 #Hangman is a paper and pencil guessing game for two or more players.
-#   One player things of a word and the other tries to guess that word by suggesting letters and within a certain number of attempts.
+#   One player thinks of a word. The other player tries to guess that word by suggesting letters and or words within a certain number of attempts.
 #   There are 6 attempts to hangman and for each incorrect attempt a limb will be added to the hang man post.
 #   Steps to complete!
 #   The Hangman Board
@@ -30,7 +30,7 @@ def player_guess():
     while playerguess.isalpha()==False:
         playerguess=input('Player 2 Please enter a letter or guess the word: ')
         if playerguess.isalpha()==False:
-            print('Player 1 please input a valid mystery word!')
+            print('Player 2 please input a valid guess (letter or guess the word) !')
         if playerguess.isalpha()==True:
             return playerguess.upper()
 
@@ -77,7 +77,8 @@ def game():
                 print(f'Your guess of {pg} is correct. ')
                 guessedletters.append(pg)
 
-                #   We are using list comprehension to 
+                #   We are using list comprehension to create an iterable of the letter with the enumerate function 
+                #   and to return the specific index position of the guessed letter in the player guess
                 index_pos=[i for i,letter in enumerate(mw) if letter==pg]
                 for index in index_pos:
                     hiddenword[index]=pg
@@ -105,7 +106,7 @@ def game():
                     print("Game Over, You have no more tries left.\n")
                     print(f'The hidden word was {mw} \n')
 
-            # The player guessed the correct word 
+            # If the player guessed the correct word 
             elif pg == mw:
                 print(f'Your guess of {pg} is correct. ')
                 guessedwords.append(pg)
